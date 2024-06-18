@@ -1,4 +1,6 @@
-let player 
+let player = []
+let name 
+let chips 
 let cards = []
 let sum = 0
 let hasBlackJack = false
@@ -22,11 +24,12 @@ function getRandomCard() {
 }
 
 function startGame() {
-    if (playerEl == 0){
-        player = {
-            let name = prompt("what is your name")
-        }
-}
+    if (!player.name || isNaN(player.chips)) {
+        player.name = prompt("What is your name?")
+        player.chips = parseInt(prompt("How many chips do you have?"))
+    }
+    
+    playerEl.textContent = player.name + ": $" + player.chips
     isAlive = true
     let firstCard = getRandomCard()
     let secondCard = getRandomCard()
@@ -34,6 +37,7 @@ function startGame() {
     sum = firstCard + secondCard
     renderGame()
 }
+
 
 function renderGame() {
     cardsEl.textContent = "Cards: "
